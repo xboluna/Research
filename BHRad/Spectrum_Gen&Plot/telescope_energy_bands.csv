@@ -1,0 +1,5 @@
+,Name,Lower-bound,Upper-bound
+0,Fermi-LAT,0.02,300.0
+1,HAWC,300.0,100000.0
+2,Swift,1.9999999999999998e-05,0.00015
+3,NuSTAR,3e-06,7.9e-05
