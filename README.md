@@ -4,5 +4,5 @@
   - process_targets.py
 - Spectrum_Gen&Plot (for use in plotting generated results from BlackHawk)
 
-## multicompDM
+## multicompDM: multi u-cDM project. 
 - MulticomponentDMNotebook (main notebook)
