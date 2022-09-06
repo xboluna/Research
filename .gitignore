@@ -1,0 +1,4 @@
+BHRad/glg_*
+.DS_Store
+BHRad/*_bkg*
+*.ipynb_checkpoints/
