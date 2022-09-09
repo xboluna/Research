@@ -17,6 +17,11 @@ Noteable caveats:
 
 targets = pd.read_csv('Query-04-22-2022/BrowseTargets.4859.1650668127', skiprows = 4, sep='|')
 
+
+# First just drop the null rows
+del targets['Unnamed: 23']
+del targets['Unnamed: 0']
+
 print(targets.keys()+ '\n')
 
 # Parse out all GRBs which have 0 test statistic
@@ -35,6 +40,8 @@ targets = targets.loc[ targets['flux_ratio'] != np.inf ]
 print('Dropping %s targets for inf flux ratio'% len(targets.loc[ np.isnan(targets['flux_ratio']) ]) )
 targets = targets.loc[ ~np.isnan(targets['flux_ratio']) ]
 
+# Copy all targets
+all_targets = targets.copy()
 
 # Impose that start of GBM is before start of LAT
 targets['GBM-LAT Time Difference'] = targets['like_gbm_t0'] - targets['like_lat_t0']
@@ -71,6 +78,22 @@ ax2.set_yscale('log')
 fig.savefig('targets.png')
 
 targets[['name        ','time                   ','ra        ','dec      ','GBM-LAT Time Difference','flux_ratio','flux_ratio_error','flux_ene_ratio','flux_ene_ratio_error']].to_csv('parsed_candidates.csv')
+
+####
+
+fig, (ax1, ax2) = plt.subplots(1,2)
+ax1.errorbar(x = targets['lle_t90 '], y=targets['flux_ratio'], yerr = targets['flux_ratio_error'], fmt = 'o', linewidth = 2, capsize = 6)
+ax1.set_xlabel('Burst duration llet90 (window of 90% flux accumulation)')
+ax1.set_ylabel('Flux ratio: hardness in GBM (10 keV - 25 MeV) / LAT (20 MeV - 300 MeV)')
+fig.set_figwidth(20)
+fig.set_figheight(10)
+ax1.set_title('Burst duration vs. Flux ratio (hardness in GBM/LAT) with main targets')
+
+ax2.set_title('Same, with ALL sources')
+ax2.errorbar(x = all_targets['lle_t90 '], y=all_targets['flux_ratio'], yerr = all_targets['flux_ratio_error'], fmt = 'o', linewidth = 2, capsize = 6)
+
+fig.savefig('Burst_duration_vs_flux_ratio_hardness.png')
+
 
 """
 # Let's parse out the targets in window.
