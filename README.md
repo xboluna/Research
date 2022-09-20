@@ -1,3 +1,5 @@
+Research files for UCSC
+
 ## BHRad/: evaporating ~1e14g EBH project.
 - Modelling&Fitting.ipynb (Fitting GRBs with EBH lightcurve)
 - OrderOfMagEstimations.ipynb (Original estimation calculations)
