@@ -1,4 +1,4 @@
-BHRad/glg_*
+BHRad/Lightcurve_Fitting/glg_*
 .DS_Store
-BHRad/*_bkg*
+BHRad/Lightcurve_Fitting/*_bkg*
 *.ipynb_checkpoints/
