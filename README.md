@@ -5,6 +5,7 @@ Research files for UCSC
 - OrderOfMagEstimations.ipynb (Original estimation calculations)
 - Lightcurve_Fitting/
 	- Fitting.ipynb (Fitting GRBs with EBH model)
+	- Selected_GRB_Images/ (Csv Data, Lightcurves & Spectra)
 - Completed_fits/ (Contains images of fitted sources)
 - GBM_Catalog_Searching/ (filtering through the database)
 	- Exploring_possible_candidates.ipynb (Parsing dataset for possible sources)
