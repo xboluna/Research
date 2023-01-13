@@ -3,3 +3,7 @@ BHRad/Lightcurve_Download/gll_*
 .DS_Store
 BHRad/Lightcurve_Download/*_bkg*
 *.ipynb_checkpoints/
+*.pha
+gll_*
+glg_*
+*.h5
