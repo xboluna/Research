@@ -1,0 +1,67 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\pagestyle{fancy}
+\newenvironment{tightemize}{\vspace{-\topsep}\begin{itemize}\itemsep1pt \parskip0pt \parsep0pt}{\end{itemize}\vspace{-\topsep}}
+
+\lhead{BHRad}
+\chead{Notes on BH Criterion}
+\rhead{Xavier Boluna}
+\begin{document}
+
+\tableofcontents
+
+\section{Individual paper notes}
+
+\subsection{Afterglow response from adiabatic blob expansion - '21}
+\begin{tightemize}
+    \item Afterglow peak for blazars occurs weeks to years after the initial jet (GeV 'leads' the radio) -- observed 40 days for Mrk421, longest 140 days in another
+    \item Applies 'convolution' of gamma-ray lightcurves into afterglow response
+    \item This afterglow from the jet is a bit of a blob of ejecta expanding -- would the same shaped curve occur with a presumably spherical shell of ejecta centered on the PBH itself? Could the PBH produce an asymmetrical shell due to rotation, charge, etc.?
+\end{tightemize}
+
+\subsection{Blandford '77: Spectrum radiopulse from EBH}
+\begin{tightemize}
+    \item $e^-$, $e^+$ pairs + "typical" interstellar $\vec{B}$ field: KE of pairs $\to$ radio waves
+    \item 50\% rest mass $\to$ $e^-$, $e^+$ pairs of ~100(m/1e11kg)$^{-1}$MeV
+    \item Pairs behave EM like a relativistically expanding conductor $\to$ virtual photons boosted by ~$\gamma^2$
+    \item Characteristic frequency: ~$\gamma^2 c/R_c$
+    \item Total radiated energy is dominated by frequency $\nu ~ 1$GHz = 4e-6 eV
+\end{tightemize}
+Lmao this is a Jackson problem. Current creates angularly radiated field.
+\begin{tightemize}
+    \item critical frequency $1.1\gamma_{f5}^{{8/3}b^{2/3}E_{25}^{1/3}}$GHz
+    \item given most energy will emerge $v~v_c$, spectral indices are $v<<v_c$:0.57, $v>>v_c$:4
+\end{tightemize}
+\begin{equation}
+\begin{gathered}
+P_{em} = 1e23 \times (\gamma_{f5}^2 b^2t^2 [W/\mbox{ster})]\\
+\mbox{LAT } 0.5m^2 < A_{eff} < 1m^2\\
+\mbox{at }d, \mbox{1 ster} \to d^2\\
+P_{em}[\frac{W}{\mbox{ster}}] = (E [W])(\frac{d^2}{A_{eff}}[\frac{m^2}{m^2}])
+\end{gathered}
+\end{equation}
+
+\subsection{Cutchin '15: Constrain rate of PBH explosion using low-freq radio}
+\begin{tightemize}
+    \item radio transient from EBH "could be signature of a extraspatial dimension"
+    \item Eight-meter-wavelength Transient Array (ETA) no signal in 4hrs of data
+    \item observational upper-limit of 2.3e-7 pc-3 yr-1 
+    \item They use Rees model stated in Blandford and not on Carr 91
+    \item $\gamma_f = \frac{1/2\times kT}{m_ec^2} \approx 1e5 (\frac{1e11g}{M})$
+    \item $\gamma_{f5} = \gamma_f/1e5$, $\nu_{01} = \nu/0.01$, $E_{23} = E/1e23 J \approx \nu_{01}\gamma_{f5}^{-1}$
+    \item $Mc^2 = \frac{\hbar c^3}{16\pi Gm_e}\gamma_f^{-1}$
+\end{tightemize}
+
+\subsection{Rees '77 Nature}
+\begin{itemize}
+    \item Better detected by an attenna (1e4pc) than a detector of $A_{eff}$ .1$m^2$ (1e-2 pc)
+    \item "Linearly polarized radio-freq pulses (rather than $\gamma$-ray ... most conspicuous)"
+\end{itemize}
+
+\end{document}
