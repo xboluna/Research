@@ -7,3 +7,4 @@ BHRad/Lightcurve_Download/*_bkg*
 gll_*
 glg_*
 *.h5
+BHRad/TransientLATSources/unassociated/*.jpg
