@@ -2,6 +2,7 @@ from astropy.table import Table
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 def generate_mollweise(targets, cmap_var = 'T90', log_cmap = False, calculate_isotropy=True):
 
@@ -37,7 +38,8 @@ def generate_mollweise(targets, cmap_var = 'T90', log_cmap = False, calculate_is
                 horizontalalignment='center', fontsize=10)
     return fig
 
-
+def propagate_error(a, b, e_a, e_b):
+    return np.abs(a/b) * np.sqrt( (e_a/a)**2 + (e_b/b) )
 
 def main():
 
@@ -56,6 +58,10 @@ def main():
     # Theta > 70 + signal_time * 10deg/min
     # 10deg/min * 1min/60s = (1/6)
     GBM['condition'] = (GBM['THETA'] > (70 + GBM['T90']*(1/6)))
+
+    # Let's also quickly calculate T90/50
+    GBM['T9050'] = GBM['T90']/GBM['T50']
+    GBM['T9050_ERROR'] = propagate_error(GBM['T90'], GBM['T50'], GBM['T90_ERROR'], GBM['T50_ERROR'])
     
     # See how many meet/fail condition
     print(GBM.condition.value_counts())
@@ -72,6 +78,7 @@ def main():
     cross_listed = non_LAT_sources.query('TRIGGER_NAME in @cross_listed')[['TRIGGER_NAME', 'THETA', 'T90']]
     print(cross_listed)
 
+    # THETA vs T90
     fig, ax = plt.subplots()
     ax.scatter(non_LAT_sources.THETA, non_LAT_sources.T90, marker='x', color = 'C0')
     ax.scatter(cross_listed.THETA, cross_listed.T90, marker='x', color='darkred', zorder=1, label = 'also listed in LLE')
@@ -83,11 +90,61 @@ def main():
     ax.legend()
     fig.savefig('THETAvsT90.png')
 
+    # Angular distribution
     fig = generate_mollweise(non_LAT_sources)
     fig.suptitle('Sources meeting condition THETA > 70 deg - (T90 * 10 deg/min)')
     fig.savefig('THETA>Isotropy.png')
     
+    # Constraining inferred plaw index
+    fig, ax = plt.subplots(figsize = (10,7))
+
+    # Pull out sources within bounds
+    sources_IN_index_range = non_LAT_sources.query(' (T9050 + T9050_ERROR > 2.4) & (T9050 - T9050_ERROR < 2.6) ')
+    selected_names = sources_IN_index_range['TRIGGER_NAME'].to_list()
+    ax.scatter(sources_IN_index_range['T9050'], sources_IN_index_range['FLUENCE'], marker='x', s=30, zorder=3, color='darkred', alpha=.7,
+               label = r'Source T90/50 $\in$ [2.4, 2.6]')
+
+    # Sources not within bounds
+    sources_NOT_in_index_range = non_LAT_sources.query('TRIGGER_NAME not in @selected_names')
+    ax.scatter(sources_NOT_in_index_range['T9050'], sources_NOT_in_index_range['FLUENCE'], marker='x', s=30, zorder=3, color='C0', alpha=.3,
+               label = r'T90/50 $\notin$')
+
+    ax.set_xscale('log')
+    ax.set_yscale('log')
+    xl = ax.get_xlim()
+    yl = ax.get_ylim()
+
+    ax.errorbar(non_LAT_sources['T9050'], non_LAT_sources['FLUENCE'], xerr = non_LAT_sources['T9050_ERROR'], yerr = non_LAT_sources['FLUENCE_ERROR'],
+                    fmt='none', linewidth=1.5, capsize=3, color='black', markersize=3, alpha=.2, zorder=1
+                )
+
+    ax.axvspan(2.4, 2.6, facecolor='gold', alpha=.1, zorder=2)
+    ax.axvline(2.4, color = 'gold', alpha = .3, zorder = 2)
+    ax.axvline(2.6, color = 'gold', alpha = .3, zorder = 2)
+
+    # Add marginal histogram
+    divider = make_axes_locatable(ax)
+    ax_histy = divider.append_axes("right", 1.2, pad=0.1, sharey=ax)
+    ax_histy.yaxis.set_tick_params(labelleft=False)
+    ax_histy.hist( [sources_NOT_in_index_range.FLUENCE.to_list(), sources_IN_index_range.FLUENCE.to_list()] , bins = np.logspace(-8 -3, 12),
+                  fill=False, histtype='step', stacked=False, orientation='horizontal', color = ['C0', 'darkred'])
+    ax_histy.set_yscale('log')
+    ax_histy.set_ylim(yl)
+    ax_histy.set_xscale('log')
+    ax_histy.set_xlabel('Counts')
+       
+    ax.set_xlim(xl)
+    ax.set_ylim(yl)
+    ax.set_ylabel('GBM Fluence (erg cm-2)')
+    ax.set_xlabel('T90/50 ratio (unitless)')
+    ax.legend()
+
+    fig.savefig('FLUENCEvsINDEX.png')
+
     import pdb;pdb.set_trace()
+
+    
+    
     
 if __name__ == "__main__":
     main()
