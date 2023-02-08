@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 
+# Catalogs download https://heasarc.gsfc.nasa.gov/cgi-bin/W3Browse/w3catindex.pl
+
 def generate_mollweise(targets, cmap_var = 'T90', log_cmap = False, calculate_isotropy=True):
 
     fig = plt.figure(figsize=(12,6))
