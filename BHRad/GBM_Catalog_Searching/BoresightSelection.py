@@ -72,6 +72,7 @@ def main():
     non_LAT_sources = GBM.query('condition == True')
 
     names = non_LAT_sources['TRIGGER_NAME'].to_list()
+    non_LAT_sources.to_csv('non_LAT_sources.csv')
 
     # Pick out sources still cross-listed
     cross_listed = LLECatalog.query('TRIGGER_NAME in @names').TRIGGER_NAME.to_list()
@@ -98,7 +99,7 @@ def main():
     fig.savefig('THETA>Isotropy.png')
     
     # Constraining inferred plaw index
-    fig, ax = plt.subplots(figsize = (10,7))
+    fig, ax = plt.subplots(figsize = (10,7)) 
 
     # Pull out sources within bounds
     sources_IN_index_range = non_LAT_sources.query(' (T9050 + T9050_ERROR > 2.4) & (T9050 - T9050_ERROR < 2.6) ')
@@ -142,6 +143,9 @@ def main():
     ax.legend()
 
     fig.savefig('FLUENCEvsINDEX.png')
+
+
+
 
     import pdb;pdb.set_trace()
 
