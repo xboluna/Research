@@ -72,7 +72,7 @@ def main():
     non_LAT_sources = GBM.query('condition == True')
 
     names = non_LAT_sources['TRIGGER_NAME'].to_list()
-    non_LAT_sources.to_csv('non_LAT_sources.csv')
+    #non_LAT_sources.to_csv('non_LAT_sources.csv')
 
     # Pick out sources still cross-listed
     cross_listed = LLECatalog.query('TRIGGER_NAME in @names').TRIGGER_NAME.to_list()
