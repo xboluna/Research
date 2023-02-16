@@ -57,13 +57,16 @@ def main():
             how = 'left'
             )
 
-    # Theta > 70 + signal_time * 10deg/min
-    # 10deg/min * 1min/60s = (1/6)
-    GBM['condition'] = (GBM['THETA'] > (70 + GBM['T90']*(1/6)))
-
     # Let's also quickly calculate T90/50
     GBM['T9050'] = GBM['T90']/GBM['T50']
     GBM['T9050_ERROR'] = propagate_error(GBM['T90'], GBM['T50'], GBM['T90_ERROR'], GBM['T50_ERROR'])
+
+    # Save catalog
+    GBM.to_csv('GBM_BurstTrig_merge.csv')
+
+    # Theta > 70 + signal_time * 10deg/min
+    # 10deg/min * 1min/60s = (1/6)
+    GBM['condition'] = (GBM['THETA'] > (70 + GBM['T90']*(1/6)))
     
     # See how many meet/fail condition
     print(GBM.condition.value_counts())
