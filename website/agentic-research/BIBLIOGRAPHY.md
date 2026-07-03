@@ -4,6 +4,13 @@ Annotated reading list. **In-repo** items are marked 📁.
 
 ---
 
+## Tier 0 — Author's primary works (website spine)
+
+| Key | Citation | In repo | Website sections |
+|-----|----------|---------|------------------|
+| **BolunaThesis2023** | Boluna, X. D. 2023. *Detection Methods for Discovering Evaporating Primordial Black Holes in Modern Gamma-Ray Telescopes.* M.S. thesis, UCSC. [PDF](https://www.xboluna.com/media/documents/xboluna_UCSC_thesis.pdf) · [ProQuest](https://www.proquest.com/dissertations-theses/detection-methods-discovering-evaporating/docview/2812309821/se-2) | 📁 `BHRad/Papers/Boluna_2023_MS_Thesis_*.pdf` | **All sections** |
+| **BolunaJCAP2024** | Boluna, X., Profumo, S., Blé, J., & Hennings, D. arXiv:[2307.06467](https://arxiv.org/abs/2307.06467) — "Searching for Exploding Black Holes" | 📁 `BHRad/Papers/Boluna_et_al_2024_*.pdf` | **All sections** (published equations/figures) |
+
 ## Tier 1 — Core to this repo (read first)
 
 | Key | Citation | In repo | Website sections |

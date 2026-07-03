@@ -8,7 +8,8 @@ Items to resolve before or during website implementation. Track resolution here.
 
 | Item | Referenced in | Impact | Action |
 |------|---------------|--------|--------|
-| **Thesis PDF** (Xavier Boluna / UCSC) | User query; Johnson thesis for threeML | Narrative authority, methodology detail | Obtain from author |
+| ~~**Thesis PDF**~~ | ✅ [Author PDF](https://www.xboluna.com/media/documents/xboluna_UCSC_thesis.pdf) · `BHRad/Papers/Boluna_2023_MS_Thesis_*.pdf` | **Resolved** — see `PAPER_CITATIONS.md` |
+| **Johnson PhD thesis** (threeML methodology) | PBH_EBH_Criterion.tex | Secondary threeML reference | Optional |
 | `Notes_on_BH_Criterion.pdf` | README | Likely redundant with `.tex` | Confirm or add to repo |
 | `Completed_fits/` | README | S6 figure assets | Locate or re-run Fitting.ipynb |
 | `Spectrum_Gen&Plot/` | README | S3 BlackHawk figures | Locate or regenerate |

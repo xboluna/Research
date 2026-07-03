@@ -23,7 +23,7 @@ Can very short, hard-spectrum GRBs observed by Fermi GBM/LAT be explained as nea
 | `BHRad/Lightcurve_Fitting/` | threeML + ultranest Bayesian fits of candidate GRBs |
 | `BHRad/Lightcurve_Download/` | Fermi data acquisition via threeML |
 | `BHRad/TransientLATSources/` | LAT transient association, lifetime/distance fits |
-| `BHRad/Papers/` | Primary paper PDF + LaTeX literature notes |
+| `BHRad/Papers/` | Thesis, JCAP paper (arXiv:2307.06467), Cline 1997, + extended bibliography |
 | `BHRad/OrderOfMagEstimations.ipynb` | Original scaling arguments (distance, J-factor) |
 
 A secondary project `multicompDM/` (ultracompact dark matter) is **out of scope** for the first website version unless we add a sidebar “related work” link.
@@ -55,7 +55,8 @@ See [SECTIONS.md](./SECTIONS.md) for the full breakdown with repo and paper anch
 | [BIBLIOGRAPHY.md](./BIBLIOGRAPHY.md) | Annotated paper list with links and relevance tags |
 | [INTERACTIVE_VISUALIZATIONS.md](./INTERACTIVE_VISUALIZATIONS.md) | Proposed Next.js interactives per section |
 | [RESEARCH_NOTES.md](./RESEARCH_NOTES.md) | Condensed notes from papers and LaTeX files |
-| [OPEN_QUESTIONS.md](./OPEN_QUESTIONS.md) | Gaps, tensions, and items needing thesis/PDF access |
+| [PAPER_CITATIONS.md](./PAPER_CITATIONS.md) | **Section-level citations** — thesis, JCAP paper, Cline 1997 |
+| [OPEN_QUESTIONS.md](./OPEN_QUESTIONS.md) | Gaps, tensions, and remaining open items |
 
 ## Key numerical anchors (for consistency across sections)
 
@@ -83,9 +84,18 @@ website/
 
 Vercel root directory: `website` (once `app/` exists).
 
+## Primary sources (PDF access verified)
+
+| Document | Location |
+|----------|----------|
+| **Boluna MS Thesis (2023)** | [xboluna.com PDF](https://www.xboluna.com/media/documents/xboluna_UCSC_thesis.pdf) · `BHRad/Papers/Boluna_2023_MS_Thesis_*.pdf` |
+| **Boluna et al. JCAP (arXiv:2307.06467)** | `BHRad/Papers/Boluna_et_al_2024_*.pdf` |
+| **Cline et al. 1997** | `BHRad/Papers/Evidence for GRBs consistent with PBH evaporation.pdf` |
+
+See [PAPER_CITATIONS.md](./PAPER_CITATIONS.md) for §/page/equation mapping to website sections.
+
 ## Next steps
 
-1. Obtain thesis PDF if available (referenced in notes; not in repo).
-2. Port key plots from notebooks into static JSON/CSV for client-side interactives.
+1. Port key plots from notebooks into static JSON/CSV for client-side interactives.
 3. Scaffold Next.js app with section routing matching SECTIONS.md order.
 4. Add “scientific honesty” panel: modern null searches vs historical Cline association.
