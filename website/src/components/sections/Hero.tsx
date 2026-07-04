@@ -7,7 +7,9 @@ export function Hero() {
     <section id="hero" className="relative flex min-h-svh flex-col">
       <div className="absolute inset-0">
         <DitherHero className="h-full w-full" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-void" />
+        {/* feathered scrim: the glow settles into void where the text lives — no visible edges */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-void)_0%,color-mix(in_srgb,var(--color-void)_88%,transparent)_22%,color-mix(in_srgb,var(--color-void)_50%,transparent)_44%,transparent_68%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_120%_90%_at_18%_100%,color-mix(in_srgb,var(--color-void)_55%,transparent)_0%,transparent_60%)]" />
       </div>
 
       <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-1 flex-col justify-end px-5 pb-20 sm:px-8">
@@ -19,7 +21,7 @@ export function Hero() {
           <br />
           Exploding Black Holes
         </h1>
-        <p className="mt-6 max-w-xl rounded-lg border border-line/80 bg-void/85 px-5 py-4 text-[15px] leading-relaxed text-ink shadow-[0_12px_40px_rgba(0,0,0,0.55)] backdrop-blur-md sm:text-base">
+        <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-ink [text-shadow:0_1px_2px_rgba(6,7,11,0.9),0_0_16px_rgba(6,7,11,0.7)] sm:text-base">
           Half a century ago Stephen Hawking predicted that black holes evaporate — and that the
           smallest ones end their lives in an explosion brighter than anything gravity has built
           since. Somewhere in the data of our γ-ray telescopes, that flash may already be waiting.
