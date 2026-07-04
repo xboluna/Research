@@ -79,4 +79,6 @@ Status: **v1 shipped.** All 11 sections implemented, built, and visually verifie
 
 ## Deploy
 
-Vercel: root directory `website`, no env vars, framework auto-detected.
+Vercel: root directory `website`, framework Next.js (pinned in `vercel.json`), Output
+Directory must stay empty. Added `public/robots.txt` for static assets only — not the
+build output.

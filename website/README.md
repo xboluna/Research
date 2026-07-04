@@ -23,10 +23,26 @@ Point Vercel at this repository and set:
 | Setting | Value |
 |---------|-------|
 | **Root Directory** | `website` |
-| Framework preset | Next.js (auto-detected) |
-| Build command | `next build` (default) |
+| Framework preset | **Next.js** |
+| Build command | `npm run build` (default) |
+| Output Directory | **leave empty** (do not set `public`) |
+
+`vercel.json` in this directory pins the Next.js framework so Vercel does not treat
+the app as a static site.
 
 No environment variables required. The site is fully static.
+
+### Troubleshooting
+
+If the build succeeds but deploy fails with:
+
+> No Output Directory named "public" found
+
+the Vercel project is misconfigured as a static site. Fix:
+
+1. **Project Settings → Build & Development**: Framework = Next.js, Output Directory blank.
+2. Remove any **Production Overrides** (yellow banner) for Output Directory.
+3. Redeploy. `website/vercel.json` should enforce the correct framework on future builds.
 
 ## Local development
 
