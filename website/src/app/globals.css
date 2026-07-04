@@ -1,0 +1,124 @@
+@import "tailwindcss";
+@import "katex/dist/katex.min.css";
+
+@theme {
+  --color-void: #06070b;
+  --color-surface: #0c0e15;
+  --color-raise: #12151f;
+  --color-line: #1c2030;
+  --color-line-bright: #2a3047;
+  --color-ink: #e8eaf2;
+  --color-ink-dim: #8b91a7;
+  --color-ink-faint: #565c72;
+  --color-signal: #7fd4c1;
+  --color-signal-dim: #3d7a6e;
+  --color-burst: #e8b45a;
+  --color-burst-dim: #8a6a35;
+  --color-theory: #9d8cff;
+  --color-theory-dim: #5b519b;
+  --color-danger: #e86a6a;
+
+  --font-display: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-void);
+}
+
+body {
+  background: var(--color-void);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-signal) 30%, transparent);
+}
+
+/* thin styled scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line-bright) transparent;
+}
+
+/* KaTeX dark adjustments */
+.katex {
+  font-size: 1.05em;
+  color: var(--color-ink);
+}
+.katex-display {
+  margin: 0.75rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}
+
+/* dither pattern utility backgrounds (2x2 + 4x4 Bayer as data URIs) */
+.dither-25 {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='1' height='1' x='0' y='0' fill='%23ffffff' fill-opacity='0.06'/%3E%3Crect width='1' height='1' x='2' y='2' fill='%23ffffff' fill-opacity='0.06'/%3E%3C/svg%3E");
+}
+.dither-50 {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Crect width='1' height='1' x='0' y='0' fill='%23ffffff' fill-opacity='0.08'/%3E%3Crect width='1' height='1' x='1' y='1' fill='%23ffffff' fill-opacity='0.08'/%3E%3C/svg%3E");
+}
+
+/* slider styling */
+input[type="range"] {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--color-line-bright);
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  background: var(--color-signal);
+  border: 1px solid var(--color-void);
+  transition: transform 0.1s ease;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.25);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  background: var(--color-signal);
+  border: 1px solid var(--color-void);
+}
+
+/* fade-up scroll reveal */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.reveal {
+  animation: fadeUp 0.7s ease both;
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.65;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.pulse-glow {
+  animation: pulse-glow 3.2s ease-in-out infinite;
+}
