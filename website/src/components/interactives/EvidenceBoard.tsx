@@ -1,20 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
+import { RepoLink } from "@/components/ui/RepoLink";
+import { REPO_PATHS } from "@/lib/repo";
 import { C } from "@/lib/colors";
 
 const ROWS: {
   claim: string;
   status: "supports" | "neutral" | "against";
   weight: string;
-  detail: string;
+  detail: ReactNode;
 }[] = [
   {
     claim: "Very short GRBs get harder as they get shorter",
     status: "supports",
     weight: "suggestive",
-    detail:
-      "Seen in BATSE (Cline 1996–97) and echoed in the repo's Fermi hardness–T90 analysis. Expected for PBH fireballs, but selection effects can mimic it.",
+    detail: (
+      <>
+        Seen in BATSE (Cline 1996–97) and echoed in the{" "}
+        <RepoLink path={REPO_PATHS.catalogSearch} file>
+          repo&apos;s Fermi hardness–T90 analysis
+        </RepoLink>
+        . Expected for PBH fireballs, but selection effects can mimic it.
+      </>
+    ),
   },
   {
     claim: "Candidate sky distribution is isotropic, off-plane",

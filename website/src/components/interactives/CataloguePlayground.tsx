@@ -3,7 +3,9 @@
 import { useMemo, useState } from "react";
 import candidates from "@/data/candidates.json";
 import { Chart } from "@/components/charts/Chart";
+import { RepoLink } from "@/components/ui/RepoLink";
 import { C } from "@/lib/colors";
+import { REPO_PATHS } from "@/lib/repo";
 
 /**
  * Filter playground on the real candidate list produced by the repo's
@@ -173,10 +175,17 @@ export function CataloguePlayground() {
       )}
 
       <p className="mt-3 max-w-2xl font-mono text-[11px] leading-relaxed text-ink-faint">
-        Real sources from the repo's Fermi catalog search
-        (H&gt;1_T90[0.2-5]_RS=0.csv): each passed hardness &gt; 1, T90 within 0.2–5 s in GBM or
-        LAT-LLE, and no measured redshift. Sources marked ∞ had zero GBM-band fluence — the
-        hardest events in the sample. Click a point to inspect it.
+        Real sources from the{" "}
+        <RepoLink path={REPO_PATHS.catalogSearch} file>
+          repo&apos;s Fermi catalog search
+        </RepoLink>{" "}
+        (
+        <RepoLink path={REPO_PATHS.candidatesCsv} file>
+          H&gt;1_T90[0.2-5]_RS=0.csv
+        </RepoLink>
+        ): each passed hardness &gt; 1, T90 within 0.2–5 s in GBM or LAT-LLE, and no measured
+        redshift. Sources marked ∞ had zero GBM-band fluence — the hardest events in the sample.
+        Click a point to inspect it.
       </p>
     </div>
   );

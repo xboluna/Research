@@ -1,4 +1,6 @@
 import { DitherHero } from "@/components/ui/DitherHero";
+import { RepoLink } from "@/components/ui/RepoLink";
+import { REPO_PATHS } from "@/lib/repo";
 
 export function Hero() {
   return (
@@ -17,7 +19,7 @@ export function Hero() {
           <br />
           Exploding Black Holes
         </h1>
-        <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-ink-dim">
+        <p className="mt-6 max-w-xl rounded-lg border border-line/80 bg-void/85 px-5 py-4 text-[15px] leading-relaxed text-ink shadow-[0_12px_40px_rgba(0,0,0,0.55)] backdrop-blur-md sm:text-base">
           Half a century ago Stephen Hawking predicted that black holes evaporate — and that the
           smallest ones end their lives in an explosion brighter than anything gravity has built
           since. Somewhere in the data of our γ-ray telescopes, that flash may already be waiting.
@@ -37,14 +39,7 @@ export function Hero() {
           <span className="hidden sm:inline">·</span>
           <span>
             and the{" "}
-            <a
-              href="https://www.xboluna.com/media/documents/xboluna_UCSC_thesis.pdf"
-              target="_blank"
-              rel="noreferrer"
-              className="text-signal hover:underline"
-            >
-              UCSC BHRad research program
-            </a>
+            <RepoLink path={REPO_PATHS.bhrad}>UCSC BHRad research program</RepoLink>
           </span>
         </div>
         <a

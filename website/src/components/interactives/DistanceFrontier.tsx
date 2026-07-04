@@ -5,6 +5,8 @@ import dmax from "@/data/dmax-curves.json";
 import transients from "@/data/transients.json";
 import { Chart, Legend } from "@/components/charts/Chart";
 import { linePath } from "@/components/charts/scale";
+import { RepoLink } from "@/components/ui/RepoLink";
+import { REPO_PATHS } from "@/lib/repo";
 import { DETECTOR_COLORS, C } from "@/lib/colors";
 
 /**
@@ -136,7 +138,10 @@ export function DistanceFrontier() {
 
       <p className="mt-3 max-w-2xl font-mono text-[11px] leading-relaxed text-ink-faint">
         Anything below a curve is detectable by that instrument (N_S ≥ 10 photons or 5σ over
-        background, 1-yr observation). Regenerated from the repo detectability pipeline
+        background, 1-yr observation). Regenerated from the{" "}
+        <RepoLink path={REPO_PATHS.analyticalModelling} file>
+          repo detectability pipeline
+        </RepoLink>{" "}
         (Analytical_Modelling.ipynb; cf. Boluna et al. Fig. 4). Above the dashed contours the
         source would visibly streak across the sky — a smoking-gun signature, but also a
         challenge for catalog association.

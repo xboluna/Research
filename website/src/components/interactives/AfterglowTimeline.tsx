@@ -1,13 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
+import { RepoLink } from "@/components/ui/RepoLink";
+import { REPO_PATHS } from "@/lib/repo";
 import { C } from "@/lib/colors";
 
 /**
  * Multi-messenger timeline: the γ flash is over in milliseconds; the radio
  * afterglow of the same event may arrive weeks to years later.
  */
-const EVENTS = [
+const EVENTS: {
+  t: number;
+  band: string;
+  color: string;
+  label: string;
+  detail: ReactNode;
+}[] = [
   {
     t: -6,
     band: "γ",
@@ -37,8 +45,16 @@ const EVENTS = [
     band: "radio",
     color: C.signal,
     label: "Blazar-like afterglow peak (~months–years)",
-    detail:
-      "In adiabatic blob expansion, the GeV flare leads the radio by 40–140 days (observed for Mrk 421). The repo asks: does a spherical PBH shell do the same? (Afterglow.tex)",
+    detail: (
+      <>
+        In adiabatic blob expansion, the GeV flare leads the radio by 40–140 days (observed for Mrk
+        421). The repo asks: does a spherical PBH shell do the same? (
+        <RepoLink path={REPO_PATHS.afterglowNotes} file>
+          Afterglow.tex
+        </RepoLink>
+        )
+      </>
+    ),
   },
 ];
 

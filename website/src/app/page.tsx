@@ -20,6 +20,8 @@ import { SkyMap } from "@/components/interactives/SkyMap";
 import { AfterglowTimeline } from "@/components/interactives/AfterglowTimeline";
 import { TransientFitter } from "@/components/interactives/TransientFitter";
 import { EvidenceBoard } from "@/components/interactives/EvidenceBoard";
+import { RepoLink } from "@/components/ui/RepoLink";
+import { REPO_PATHS } from "@/lib/repo";
 
 export default function Home() {
   return (
@@ -66,7 +68,19 @@ export default function Home() {
 
         <Panel
           title="the photon spectrum, mass by mass"
-          caption="Grid computed by the site's data pipeline with the exact parameterization used in the repo's Analytical_Modelling.ipynb (Ukwatta et al. 2016, Eqs. 31–34), the same forms fit to BlackHawk output."
+          caption={
+            <>
+              Grid computed by the site&apos;s{" "}
+              <RepoLink path={REPO_PATHS.dataPipeline} file>
+                data pipeline
+              </RepoLink>{" "}
+              with the exact parameterization used in{" "}
+              <RepoLink path={REPO_PATHS.analyticalModelling} file>
+                Analytical_Modelling.ipynb
+              </RepoLink>{" "}
+              (Ukwatta et al. 2016, Eqs. 31–34), the same forms fit to BlackHawk output.
+            </>
+          }
         >
           <SpectrumExplorer />
         </Panel>
@@ -135,7 +149,16 @@ export default function Home() {
 
         <Panel
           title="mass function gallery"
-          caption="Three physically motivated families, normalized and evaluated by the data pipeline (Boluna et al. Eqs. 3.9–3.14). The red line marks M_U: only the sliver of ψ crossing it explodes on our watch."
+          caption={
+            <>
+              Three physically motivated families, normalized and evaluated by the{" "}
+              <RepoLink path={REPO_PATHS.dataPipeline} file>
+                data pipeline
+              </RepoLink>{" "}
+              (Boluna et al. Eqs. 3.9–3.14). The red line marks M_U: only the sliver of ψ crossing
+              it explodes on our watch.
+            </>
+          }
         >
           <MassFunctions />
         </Panel>
@@ -195,7 +218,16 @@ export default function Home() {
 
         <Panel
           title="the universal spectral index"
-          caption="Regenerated from the pipeline (Boluna et al. Eq. 4.8, cf. Fig. 6). At 1 GeV the slope sweeps through γ ≈ 2–3 (quasar-like territory) before locking onto γ → 1.5 near death."
+          caption={
+            <>
+              Regenerated from the{" "}
+              <RepoLink path={REPO_PATHS.dataPipeline} file>
+                data pipeline
+              </RepoLink>{" "}
+              (Boluna et al. Eq. 4.8, cf. Fig. 6). At 1 GeV the slope sweeps through γ ≈ 2–3
+              (quasar-like territory) before locking onto γ → 1.5 near death.
+            </>
+          }
         >
           <SpectralIndex />
         </Panel>
@@ -220,7 +252,14 @@ export default function Home() {
 
         <Panel
           title="effective area atlas"
-          caption="Digitized instrument response curves from the repo (EffectiveAreas/*.dat, cf. Boluna et al. Fig. 3). Overlay the PBH spectrum and slide its mass: watch which instrument 'owns' each stage of evaporation."
+          caption={
+            <>
+              Digitized instrument response curves from{" "}
+              <RepoLink path={REPO_PATHS.effectiveAreas}>EffectiveAreas/*.dat</RepoLink> in the
+              BHRad repo (cf. Boluna et al. Fig. 3). Overlay the PBH spectrum and slide its mass:
+              watch which instrument &apos;owns&apos; each stage of evaporation.
+            </>
+          }
         >
           <DetectorAtlas />
         </Panel>
@@ -235,7 +274,18 @@ export default function Home() {
           </p>
         </Prose>
 
-        <Panel title="anatomy of a joint fit" caption="The pipeline used for every candidate in §06 — click through each stage.">
+        <Panel
+          title="anatomy of a joint fit"
+          caption={
+            <>
+              The{" "}
+              <RepoLink path={REPO_PATHS.fittingPipeline} file>
+                threeML fitting pipeline
+              </RepoLink>{" "}
+              used for every candidate in §06 — click through each stage.
+            </>
+          }
+        >
           <ThreeMLPipeline />
         </Panel>
       </Section>
@@ -263,7 +313,20 @@ export default function Home() {
 
         <Panel
           title="the sensitivity frontier"
-          caption="Regenerated end-to-end by this site's data pipeline from the repo's detectability code — same effective areas, backgrounds, and detection criteria (cf. Boluna et al. Fig. 4). Everything below a curve is visible to that instrument."
+          caption={
+            <>
+              Regenerated end-to-end by this site&apos;s{" "}
+              <RepoLink path={REPO_PATHS.dataPipeline} file>
+                data pipeline
+              </RepoLink>{" "}
+              from{" "}
+              <RepoLink path={REPO_PATHS.analyticalModelling} file>
+                Analytical_Modelling.ipynb
+              </RepoLink>{" "}
+              detectability code — same effective areas, backgrounds, and detection criteria (cf.
+              Boluna et al. Fig. 4). Everything below a curve is visible to that instrument.
+            </>
+          }
         >
           <DistanceFrontier />
         </Panel>
@@ -305,7 +368,16 @@ export default function Home() {
 
         <Panel
           title="fit real bursts by hand"
-          caption="Background-subtracted 100 ms lightcurves for seven candidate GRBs, exported directly from the repo's fitting data (Lightcurve_Fitting/~100ms_Source_Data). Drive the template parameters the Bayesian sampler explores."
+          caption={
+            <>
+              Background-subtracted 100 ms lightcurves for seven candidate GRBs, exported directly
+              from{" "}
+              <RepoLink path={REPO_PATHS.lightcurveData}>
+                Lightcurve_Fitting/~100ms_Source_Data
+              </RepoLink>{" "}
+              in the BHRad repo. Drive the template parameters the Bayesian sampler explores.
+            </>
+          }
         >
           <LightcurveComposer />
         </Panel>
@@ -339,14 +411,26 @@ export default function Home() {
           <p>
             The idea traces back to Cline's BATSE analyses in the 1990s{" "}
             <Cite k="cline97" sec="§3" />, which found a curious subpopulation of very short,
-            anomalously hard bursts. The repo's search modernizes this on Fermi's much deeper
-            catalog.
+            anomalously hard bursts. The{" "}
+            <RepoLink path={REPO_PATHS.catalogSearch} file>
+              repo&apos;s Fermi catalog search
+            </RepoLink>{" "}
+            modernizes this on Fermi&apos;s much deeper catalog.
           </p>
         </Prose>
 
         <Panel
           title="filter playground — real candidates"
-          caption="The 36 sources that survived the repo's full selection, with live re-filtering. Hardness here is LAT fluence over GBM fluence; Cline's original hardness–duration anticorrelation used BATSE bands."
+          caption={
+            <>
+              The 36 sources that survived the repo&apos;s full selection (
+              <RepoLink path={REPO_PATHS.candidatesCsv} file>
+                H&gt;1_T90[0.2-5]_RS=0.csv
+              </RepoLink>
+              ), with live re-filtering. Hardness here is LAT fluence over GBM fluence; Cline&apos;s
+              original hardness–duration anticorrelation used BATSE bands.
+            </>
+          }
         >
           <CataloguePlayground />
         </Panel>
@@ -371,7 +455,16 @@ export default function Home() {
 
         <Panel
           title="the candidate sky, in galactic coordinates"
-          caption="Mollweide projection with the galactic center at the middle and the plane along the equator — the same visualization produced by the repo's BoresightSelection.py. Equatorial coordinates converted to galactic on the fly."
+          caption={
+            <>
+              Mollweide projection with the galactic center at the middle and the plane along the
+              equator — the same visualization produced by{" "}
+              <RepoLink path={REPO_PATHS.boresightSelection} file>
+                BoresightSelection.py
+              </RepoLink>{" "}
+              in the BHRad repo. Equatorial coordinates converted to galactic on the fly.
+            </>
+          }
         >
           <SkyMap />
         </Panel>
@@ -404,7 +497,11 @@ export default function Home() {
             And blazar physics adds a slower channel: adiabatically expanding ejecta re-radiate
             at progressively lower frequencies, with radio peaking 40–140 days after the γ-ray
             flare in observed jets. Would a spherical PBH shell do the same? That is an open
-            question the repo's notes flag explicitly <Cite k="thesis" sec="§2.10" />.
+            question the{" "}
+            <RepoLink path={REPO_PATHS.afterglowNotes} file>
+              repo&apos;s afterglow notes
+            </RepoLink>{" "}
+            flag explicitly <Cite k="thesis" sec="§2.10" />.
           </p>
         </Prose>
 
@@ -432,7 +529,11 @@ export default function Home() {
           <TeX block math="F_\gamma(t) \simeq 2.7\times10^{-8}\left(\frac{\mathrm{pc}}{d}\right)^{2}\left(\frac{\tau - t}{\mathrm{s}}\right)^{-0.533}\,\mathrm{cm^{-2}\,s^{-1}}" />
           <p>
             The Fermi LAT Transient Catalog lists 35 sources with no known counterpart at any
-            wavelength. The thesis pipeline fit every one of them with this two-parameter model{" "}
+            wavelength. The{" "}
+            <RepoLink path={REPO_PATHS.transientFits} file>
+              thesis transient-fitting pipeline
+            </RepoLink>{" "}
+            fit every one of them with this two-parameter model{" "}
             <Cite k="thesis" sec="§3.1" />.
           </p>
         </Prose>
@@ -525,11 +626,24 @@ export default function Home() {
               <div className="font-mono text-[10px] uppercase tracking-widest text-ink-faint">
                 about this site
               </div>
-              <p className="mt-2 text-[12px] leading-relaxed text-ink-faint">
-                Every chart is generated from the BHRad research repository — the same effective
-                areas, spectra parameterizations, candidate catalogs, and fitted parameters used
-                in the published analysis. Data pipeline and source available in the repo.
+              <p className="mt-2 text-[12px] leading-relaxed text-ink-dim">
+                Every chart is generated from the{" "}
+                <RepoLink path={REPO_PATHS.bhrad}>BHRad research repository</RepoLink> — the same
+                effective areas, spectra parameterizations, candidate catalogs, and fitted parameters
+                used in the published analysis. Regenerated by the{" "}
+                <RepoLink path={REPO_PATHS.dataPipeline} file>
+                  website data pipeline
+                </RepoLink>
+                .
               </p>
+              <a
+                href="https://github.com/xboluna/Research"
+                target="_blank"
+                rel="noreferrer"
+                className="mt-4 inline-flex w-fit items-center gap-2 rounded border border-signal/50 bg-signal/10 px-4 py-2 font-mono text-[11px] uppercase tracking-widest text-signal transition-colors hover:bg-signal/20"
+              >
+                view on GitHub ↗
+              </a>
             </div>
           </div>
         </footer>

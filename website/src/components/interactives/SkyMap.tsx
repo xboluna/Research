@@ -3,6 +3,8 @@
 import { useMemo, useState } from "react";
 import candidates from "@/data/candidates.json";
 import transients from "@/data/transients.json";
+import { RepoLink } from "@/components/ui/RepoLink";
+import { REPO_PATHS } from "@/lib/repo";
 import { C } from "@/lib/colors";
 
 /**
@@ -215,8 +217,15 @@ export function SkyMap() {
       <p className="mt-3 max-w-2xl font-mono text-[11px] leading-relaxed text-ink-faint">
         Galactic coordinates, galactic center at the middle, plane along the equator. If these
         sources were neutron stars or other stellar remnants they would trace the disk; local PBH
-        explosions should be isotropic. Sky positions from the repo's candidate CSV and the 1FLT
-        fitted-parameter table (cf. BoresightSelection.py, thesis Fig. 3.5).
+        explosions should be isotropic. Sky positions from the{" "}
+        <RepoLink path={REPO_PATHS.candidatesCsv} file>
+          candidate CSV
+        </RepoLink>{" "}
+        and the 1FLT fitted-parameter table (cf.{" "}
+        <RepoLink path={REPO_PATHS.boresightSelection} file>
+          BoresightSelection.py
+        </RepoLink>
+        , thesis Fig. 3.5).
       </p>
     </div>
   );
